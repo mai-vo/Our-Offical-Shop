@@ -17,10 +17,7 @@ class Router
 		return $router;
 	}
 
-	// public function define($routes)
-	// {
-	// 	$this->routes=$routes;
-	// }
+	
 
 	public function get($uri,$controller)
 	{
@@ -34,6 +31,7 @@ class Router
 
 	public function direct($uri,$requestType)
 	{
+
 		if(array_key_exists($uri,$this->routes[$requestType]))
 		{
 
@@ -46,6 +44,7 @@ class Router
 	protected function callAction($controller,$action)
 	{
 		$controller="App\\Controllers\\{$controller}";
+		
 		$controller=new $controller;
 		if(!method_exists($controller,$action)){
 			throw new Exception(
